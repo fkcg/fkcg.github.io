@@ -95,7 +95,6 @@
         #773300
     */
     * {
-        box-sizing: border-box;
         color: #000000;
         font-size: 1em;
         font-family: 'Roboto', sans-serif;
@@ -127,7 +126,7 @@
         width: 100%;
         accent-color: #00DCE7;
         padding: 10px 0px 0px 5px;
-        margin: 12px 0px 0px 0px;
+        margin: 12px 0px 0px 100px;
     }
     input {
         width: 100%;
