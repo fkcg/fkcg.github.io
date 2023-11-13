@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./Sprint-300x300.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+		
+		<link href="./_app/immutable/assets/2.ef936918.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.c63d5954.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.4bdec8a6.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.1e600a82.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.ed3d3269.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.c4fa5ee6.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.b4371e38.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.27608269.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">  <div class="centered svelte-1kkabxe"><h1 class="svelte-1kkabxe" data-svelte-h="svelte-ozzxix">Medlemsskapsansökan</h1> <label for="cert" class="svelte-1kkabxe" data-svelte-h="svelte-1fj29qo">Certnummer:</label> <input id="cert" type="text" placeholder="Certnummer" autocomplete="off" class="svelte-1kkabxe" value=""> <label for="certlevel" class="svelte-1kkabxe" data-svelte-h="svelte-1ox344v">Licensegrad:</label> <select id="certlevel" class="svelte-1kkabxe"><option value="A" class="svelte-1kkabxe">A </option><option value="B" class="svelte-1kkabxe">B </option><option value="C" class="svelte-1kkabxe">C </option><option value="D" class="svelte-1kkabxe">D </option><option value="E" class="svelte-1kkabxe">E - Elev </option></select> <label for="name" class="svelte-1kkabxe" data-svelte-h="svelte-t4ghih">Namn:</label> <input id="name" type="name" placeholder="Namn" autocomplete="name" class="svelte-1kkabxe" value=""> <label for="email" class="svelte-1kkabxe" data-svelte-h="svelte-1flf0h4">Email:</label> <input id="email" type="email" placeholder="Email" autocomplete="email" class="svelte-1kkabxe" value=""> <label for="tel" class="svelte-1kkabxe" data-svelte-h="svelte-1hmcms0">Telefon:</label> <input id="tel" type="tel" placeholder="Telefon" autocomplete="tel" class="svelte-1kkabxe" value=""> <div class="hmember svelte-1kkabxe"><label id="label-hmember" for="hmember" class="svelte-1kkabxe" data-svelte-h="svelte-1dw1w1s">Hedersmedlem:</label> <input id="hmember" type="checkbox" class="svelte-1kkabxe"></div> <button class="svelte-1kkabxe" data-svelte-h="svelte-1plyhwt">Ansök</button>  <dialog class="svelte-1kkabxe"> <div class="svelte-1kkabxe"><h1 class="svelte-1kkabxe" data-svelte-h="svelte-1xg4b0n">Ansökan mottagen</h1> <p class="svelte-1kkabxe">För att medlemsskapet skall godkännas så behöver medlemsavgiften på 3000 kr skickas till antingen Swishnummer 1235425467 eller Bankgironummer 117-0224.</p> <p class="svelte-1kkabxe" data-svelte-h="svelte-burq3p">Ange certnummer som meddelande.</p> <img src="swish_3000.svg" alt="Swish QR Code" width="300px" height="300px" class="svelte-1kkabxe"> <a href="https://app.swish.nu/1/p/sw/?sw=1235425467&amp;amt=3000&amp;cur=SEK&amp;msg=&amp;src=qr" class="svelte-1kkabxe"><button class="svelte-1kkabxe" data-svelte-h="svelte-1tomeow">Öppna Swish på denna enhet</button></a></div></dialog> </div> 
+			
+			<script>
+				{
+					__sveltekit_1gbm2k7 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.c63d5954.js"),
+						import("./_app/immutable/entry/app.ed3d3269.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
