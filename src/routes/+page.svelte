@@ -5,20 +5,20 @@
     let name = "";
     let email = "";
     let tel = "";
+    let nameRel = "";
+    let telRel = "";
     let hmember = false;
-    let applied = false;
     
     $: swishUrl = "https://app.swish.nu/1/p/sw/?sw=1235425467&amt=" + (hmember ? "2100" : "3000") + "&cur=SEK&msg=" + cert + "&src=qr"
 
-    $: postData = "entry.2040625706=" + encodeURIComponent(cert) + "&entry.1366402579=" + encodeURIComponent(name) + "&entry.1208613624=" + encodeURIComponent(email) + "&entry.204702185=" + encodeURIComponent(tel) + "&entry.79715208=" + encodeURIComponent(certLevel)
+    $: postData = "entry.2040625706=" + encodeURIComponent(cert) + "&entry.1366402579=" + encodeURIComponent(name) + "&entry.1208613624=" + encodeURIComponent(email) + "&entry.204702185=" + encodeURIComponent(tel) + "&entry.79715208=" + encodeURIComponent(certLevel) + "&entry.1888244923=" + encodeURIComponent(nameRel) + "&entry.783511263=" + encodeURIComponent(telRel)
     /**
 	 * @type {any}
 	 */
     let dialog;
-    $: if (dialog && applied) dialog.showModal();
 
     async function apply() {
-        applied = true;
+        dialog.showModal();
 		const res = await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeUVFeWKF0aPC-ZzD_hu7-_RA2EwD_DslduLWBJDodc9K-dBQ/formResponse", {
 			method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded"},
@@ -34,7 +34,7 @@
 
 <div class="centered">
     <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
-    <dialog bind:this={dialog} on:close={() => (applied = false)}	on:click|self={() => dialog.close()}>
+    <dialog bind:this={dialog} on:click|self={() => dialog.close()}>
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div on:click|stopPropagation>
             <h1>Ansökan mottagen</h1>
@@ -64,6 +64,11 @@
     <div id="hmember-div">
         <label id="hmember-label" for="hmember">Hedersmedlem:</label>
         <input id="hmember" type="checkbox" bind:checked={hmember}/>
+    </div>
+    <div id="rel-div">
+        <h2>Närmast anhörig</h2>
+        <input id="nameRel" type="name" bind:value={nameRel} placeholder="Namn" autocomplete="name" />
+        <input id="telRel" type="tel" bind:value={telRel} placeholder="Telefon" autocomplete="tel" />
     </div>
     <button on:click={apply}>Ansök</button>
 </div>
@@ -109,21 +114,20 @@
     }
     #hmember-div {
         display: flex;
+        justify-content: space-between;
         width: 100%;
+        margin: 0px 0px 15px 0px;
     }
     #hmember-label {
-        width: 0%;
+        width: 100%;
         padding: 5px 0px 0px 5px;
-        margin: 10px, 0px, 0px, 0px;
-        float: left;
+        margin: 5px 0px 0px 0px;
     }
     #hmember {
-        width: 80%;
-        height: 100%;
-        padding: 5px, 0px, 0px, 0px;
-        margin: 10px, 0px, 0px, 0px;
-        float: right;
+        width: 100%;
         accent-color: #00DCE7;
+        padding: 10px 0px 0px 5px;
+        margin: 12px 0px 0px 0px;
     }
     input {
         width: 100%;
@@ -165,6 +169,12 @@
         box-sizing: border-box;
         background-color: #FFFFFF;
     }
+    #rel-div {
+        border-radius: 5px;
+        background-color: #cacaca;
+        margin: 0 auto;
+        padding: 10px;
+    }
     input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, input[type="name"]:focus, select:focus {
         outline: #00DCE7 solid 2px;
     }
@@ -172,7 +182,7 @@
         width: 100%;
         background-color: #00DCE7;
         padding: 14px 20px;
-        margin: 8px 0;
+        margin: 12px 0;
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -191,6 +201,10 @@
         margin: 15px 0px;
         display: inline-block;
     }
+    h2 {
+        font-size: 1.2em;
+        margin: 0px 0px 0px 0px;
+    }
     img {
         width: 100%;
         padding: 10px 10px;
@@ -198,7 +212,7 @@
     }
     dialog {
         max-width: 30em;
-        margin: 0 auto;
+        margin: 0px auto 0px auto;
         border-radius: 5px;
         background-color: #f2f2f2;
         background: rgba(255, 255, 255);
@@ -215,7 +229,7 @@
 	dialog > div {
         max-width: 30em;
         margin: 0 auto;
-        padding: 5px;
+        padding: 5px 5px;
 	}
 	dialog > div > a {
         outline: none;
