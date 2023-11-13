@@ -33,7 +33,18 @@
 </script>
 
 <div class="centered">
-    <h1>Medlemsskapsansökan</h1>
+    <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+    <dialog bind:this={dialog} on:close={() => (applied = false)}	on:click|self={() => dialog.close()}>
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div on:click|stopPropagation>
+            <h1>Ansökan mottagen</h1>
+            <p>För att medlemsskapet skall godkännas så behöver medlemsavgiften på {hmember ? "2100" : "3000"} kr skickas till antingen Swishnummer&nbsp;1235425467 eller Bankgironummer&nbsp;117-0224.</p>
+            <p>Ange certnummer som meddelande.</p>
+            <img src={hmember ? "swish_2100.svg" : "swish_3000.svg"} alt="Swish QR Code" width="300px" height="300px" />
+            <a href={swishUrl}><button>Öppna Swish på denna enhet</button></a>
+        </div>
+    </dialog>
+    <h1>Medlemsskap 2024</h1>
     <label for="cert">Certnummer:</label>
     <input id="cert" type="text" bind:value={cert} placeholder="Certnummer" autocomplete="off" />
     <label for="certlevel">Licensegrad:</label>
@@ -50,22 +61,11 @@
     <input id="email" type="email" bind:value={email} placeholder="Email" autocomplete="email" />
     <label for="tel">Telefon:</label>
     <input id="tel" type="tel" bind:value={tel} placeholder="Telefon" autocomplete="tel" />
-    <div class="hmember">
-        <label id="label-hmember" for="hmember">Hedersmedlem:</label>
+    <div id="hmember-div">
+        <label id="hmember-label" for="hmember">Hedersmedlem:</label>
         <input id="hmember" type="checkbox" bind:checked={hmember}/>
     </div>
     <button on:click={apply}>Ansök</button>
-    <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
-    <dialog bind:this={dialog} on:close={() => (applied = false)}	on:click|self={() => dialog.close()}>
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <div on:click|stopPropagation>
-            <h1>Ansökan mottagen</h1>
-            <p>För att medlemsskapet skall godkännas så behöver medlemsavgiften på {hmember ? "2100" : "3000"} kr skickas till antingen Swishnummer&nbsp;1235425467 eller Bankgironummer&nbsp;117-0224.</p>
-            <p>Ange certnummer som meddelande.</p>
-            <img src={hmember ? "swish_2100.svg" : "swish_3000.svg"} alt="Swish QR Code" width="300px" height="300px" />
-            <a href={swishUrl}><button>Öppna Swish på denna enhet</button></a>
-        </div>
-    </dialog>
 </div>
 
 <style>
@@ -89,8 +89,13 @@
         #c8f8ff
         #773300
     */
-    .centered {
+    * {
+        box-sizing: border-box;
+        color: #000000;
+        font-size: 1em;
         font-family: 'Roboto', sans-serif;
+    }
+    .centered {
         max-width: 30em;
         margin: 0 auto;
         border-radius: 5px;
@@ -102,15 +107,14 @@
         padding: 0px 5px;
         display: inline-block;
     }
-    .hmember {
+    #hmember-div {
+        display: flex;
         width: 100%;
-        display: inline-block;
     }
-    #label-hmember {
+    #hmember-label {
         width: 0%;
         padding: 5px 0px 0px 5px;
         margin: 10px, 0px, 0px, 0px;
-        display: inline-flex;
         float: left;
     }
     #hmember {
@@ -118,7 +122,6 @@
         height: 100%;
         padding: 5px, 0px, 0px, 0px;
         margin: 10px, 0px, 0px, 0px;
-        display: inline-flex;
         float: right;
         accent-color: #00DCE7;
     }
@@ -136,8 +139,6 @@
         outline: #00DCE7 solid 2px;
     }
     button {
-        font-family: 'Roboto', sans-serif;
-        font-size: medium;
         width: 100%;
         background-color: #00DCE7;
         padding: 14px 20px;
@@ -146,8 +147,12 @@
         border-radius: 4px;
         cursor: pointer;
     }
-    button:hover {
+    button:hover, button:focus {
         background-color: #01cad4; /* #0090c6; */
+        outline: none;
+    }
+    h1 {
+        font-size: 2em;
     }
     h1, p, a {
         text-align: center;
@@ -162,31 +167,40 @@
         display: inline-block;
     }
     dialog {
-        font-family: 'Roboto', sans-serif;
         max-width: 30em;
         margin: 0 auto;
         border-radius: 5px;
         background-color: #f2f2f2;
         background: rgba(255, 255, 255);
 		border: none;
+        outline: none;
         padding: 20px;
 	}
+    dialog:focus {
+        outline: none;
+    }
 	dialog::backdrop {
 		background: rgba(168, 168, 168, 0.205)
     }
 	dialog > div {
-        font-family: 'Roboto', sans-serif;
         max-width: 30em;
         margin: 0 auto;
         padding: 5px;
 	}
+	dialog > div > a {
+        outline: none;
+	}
 	dialog > div > a > button {
-        font-family: 'Roboto', sans-serif;
         color: #ffffff;
         width: 50%;
         background-color: #C1347A;
     }
 	dialog > div > a > button:hover {
         background-color: #D53A53;
+        outline: none;
+    }
+	dialog > div > a > button:focus {
+        background-color: #D53A53;
+        outline: none;
     }
 </style>
