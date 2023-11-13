@@ -50,8 +50,8 @@
     <label for="certlevel">Licensegrad:</label>
     <select id="certlevel" bind:value={certLevel}>
 		{#each certLevels as level}
-            <option value={level.value}>
-				{level.text}
+            <option id={level.value} value={level.value}>
+				<label for={level.value} class="level">{level.text}</label>
 			</option>
 		{/each}
 	</select>
@@ -125,7 +125,37 @@
         float: right;
         accent-color: #00DCE7;
     }
-    input, select, option {
+    input {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+    }
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0; 
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+    }
+    option {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+    }
+    .level {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
