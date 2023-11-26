@@ -73,11 +73,6 @@
 			</option>
 		{/each}
 	</select>
-    <!--
-    <div id="hmember-div">
-        <label id="hmember-label" for="hmember">Hedersmedlem:</label>
-        <input id="hmember" type="checkbox" bind:checked={hmember}/>
-    </div>-->
     <div id="rel-div">
         <h2>Närmast anhörig</h2>
         <input id="nameRel" type="name" bind:value={nameRel} placeholder="Namn" autocomplete="name" />
@@ -123,27 +118,6 @@
         width: 100%;
         padding: 0rem 0.25rem;
     }
-    #hmember-div {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 0px 0px 15px 0px;
-        display: inline-block;
-    }
-    #hmember-label {
-        width: 100%;
-        padding: 5px 0px 0px 5px;
-        margin: 5px 0px 0px 0px;
-    }
-    #hmember {
-        width: 100%;
-        accent-color: #00DCE7;
-        padding: 10px 0px 0px 5px;
-        margin: 12px 0px 0px 100px;
-        align-self: center;
-    }
     input {
         width: 100%;
         padding: 12px 20px;
@@ -187,7 +161,7 @@
     #rel-div {
         border-radius: 5px;
         background-color: #cacaca;
-        margin: 0 auto;
+        margin: 15px 0px 0px 0px;
         padding: 10px;
     }
     input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, input[type="name"]:focus, select:focus {
