@@ -10,7 +10,7 @@
     let telRel = "";
     let member = "Medlem";
     
-    $: memberPrice =  (member == "Hedersmedlem" ? "2100" : member == "Stödmedlem" ? "700" : "3000");
+    $: memberPrice =  (member == "Hedersmedlem" ? "2100" : member == "Stödmedlem" ? "300" : "3000");
 
     $: swishUrl = "https://app.swish.nu/1/p/sw/?sw=1235425467&amt=" + memberPrice + "&cur=SEK&msg=" + cert + "&src=qr";
 
