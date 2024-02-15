@@ -14,7 +14,8 @@
     $: memberPrice =  (member == "Hedersmedlem" ? "2100" : member == "Stödmedlem" ? "300" : "3000");
 
     $: swishUrl = "https://app.swish.nu/1/p/sw/?sw=1235425467&amt=" + memberPrice + "&cur=SEK&msg=" + cert + "&src=qr";
-    $: postData = "entry.2040625706=" + encodeURIComponent(cert) + "&entry.1416888566=" + encodeURIComponent(cert) + "&entry.1366402579=" + encodeURIComponent(name) + "&entry.1208613624=" + encodeURIComponent(email) + "&entry.204702185=" + encodeURIComponent(tel) + "&entry.79715208=" + encodeURIComponent(certLevel) + "&entry.1888244923=" + encodeURIComponent(nameRel) + "&entry.783511263=" + encodeURIComponent(telRel);
+    //             entry.2040625706=                      446666    &entry.1416888566=                   76767567    &entry.1366402579=                       Berif    &entry.1208613624=              fdsf%40gszc.azs    &entry.204702185=                   53452435    &entry.1888244923=                         bhdgfg    &entry.783511263=                       6457457    &entry.79715208=                                D
+    $: postData = "entry.2040625706=" + encodeURIComponent(cert) + "&entry.1416888566=" + encodeURIComponent(pnr) + "&entry.1366402579=" + encodeURIComponent(name) + "&entry.1208613624=" + encodeURIComponent(email) + "&entry.204702185=" + encodeURIComponent(tel) + "&entry.1888244923=" + encodeURIComponent(nameRel) + "&entry.783511263=" + encodeURIComponent(telRel) + "&entry.79715208=" + encodeURIComponent(certLevel);
     /**
 	 * @type {any}
 	 */
