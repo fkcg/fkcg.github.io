@@ -3,6 +3,7 @@
     const memberType = [{value: "Medlem", text: "Medlem"}, {value: "Hedersmedlem", text: "Hedersmedlem"}, {value: "Stödmedlem", text: "Stödmedlem"}]
     let cert = "";
     let certLevel = "A";
+    let pnr = "";
     let name = "";
     let email = "";
     let tel = "";
@@ -13,8 +14,7 @@
     $: memberPrice =  (member == "Hedersmedlem" ? "2100" : member == "Stödmedlem" ? "300" : "3000");
 
     $: swishUrl = "https://app.swish.nu/1/p/sw/?sw=1235425467&amt=" + memberPrice + "&cur=SEK&msg=" + cert + "&src=qr";
-
-    $: postData = "entry.2040625706=" + encodeURIComponent(cert) + "&entry.1366402579=" + encodeURIComponent(name) + "&entry.1208613624=" + encodeURIComponent(email) + "&entry.204702185=" + encodeURIComponent(tel) + "&entry.79715208=" + encodeURIComponent(certLevel) + "&entry.1888244923=" + encodeURIComponent(nameRel) + "&entry.783511263=" + encodeURIComponent(telRel);
+    $: postData = "entry.2040625706=" + encodeURIComponent(cert) + "&entry.1416888566=" + encodeURIComponent(cert) + "&entry.1366402579=" + encodeURIComponent(name) + "&entry.1208613624=" + encodeURIComponent(email) + "&entry.204702185=" + encodeURIComponent(tel) + "&entry.79715208=" + encodeURIComponent(certLevel) + "&entry.1888244923=" + encodeURIComponent(nameRel) + "&entry.783511263=" + encodeURIComponent(telRel);
     /**
 	 * @type {any}
 	 */
@@ -22,17 +22,19 @@
 
     async function apply() {
         dialog.showModal();
-        /*
-		const res = await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeUVFeWKF0aPC-ZzD_hu7-_RA2EwD_DslduLWBJDodc9K-dBQ/formResponse", {
+        const res = await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeUVFeWKF0aPC-ZzD_hu7-_RA2EwD_DslduLWBJDodc9K-dBQ/formResponse", {
 			method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded"},
 			body: postData
-		}).then((r) => {})
-        if (res.ok && res.status >= 200 && res.status < 300) {
-            
-        } else {
-            alert("Tekniskt fel! :( Pröva att ladda om sidan, annars så leta hjälp.");
-        }*/
+		}).then((res) => {
+            /*
+            if (res.ok && res.status >= 200 && res.status < 300) {
+                dialog.showModal();
+            } else {
+                alert("Tekniskt fel! :( Pröva att ladda om sidan, annars så leta hjälp.");
+            }
+            */
+        });
     }
 </script>
 
@@ -59,13 +61,15 @@
 			</option>
 		{/each}
 	</select>
+    <label for="pnr">Personnummer:</label>
+    <input id="pnr" type="text" bind:value={pnr} placeholder="Personnummer" />
     <label for="name">Namn:</label>
     <input id="name" type="name" bind:value={name} placeholder="Namn" autocomplete="name" />
     <label for="email">Email:</label>
     <input id="email" type="email" bind:value={email} placeholder="Email" autocomplete="email" />
     <label for="tel">Telefon:</label>
     <input id="tel" type="tel" bind:value={tel} placeholder="Telefon" autocomplete="tel" />
-    <label for="certlevel">Typ av medlemsskap:</label>
+    <label for="certlevel">Medlemsskap:</label>
     <select id="memberType" bind:value={member}>
 		{#each memberType as type}
             <option id={type.value} value={type.value}>
