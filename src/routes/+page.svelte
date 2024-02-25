@@ -1,5 +1,5 @@
 <script>
-    const certLevels = [{value: "A", text: "A"}, {value: "B", text: "B"}, {value: "C", text: "C"}, {value: "D", text: "D"}, {value: "E", text: "E - Elev"}]
+    const certLevels = [{value: "A", text: "A"}, {value: "B", text: "B"}, {value: "C", text: "C"}, {value: "D", text: "D"}, {value: "E", text: "E - Elev"}, {value: "Ingen license", text: "Ingen license"}]
     const memberType = [{value: "Medlem", text: "Medlem"}, {value: "Hedersmedlem", text: "Hedersmedlem"}, {value: "Stödmedlem", text: "Stödmedlem"}]
     let cert = "";
     let certLevel = "A";
@@ -23,19 +23,22 @@
 
     async function apply() {
         dialog.showModal();
-        const res = await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeUVFeWKF0aPC-ZzD_hu7-_RA2EwD_DslduLWBJDodc9K-dBQ/formResponse", {
-			method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded"},
-			body: postData
-		}).then((res) => {
-            /*
-            if (res.ok && res.status >= 200 && res.status < 300) {
-                dialog.showModal();
-            } else {
-                alert("Tekniskt fel! :( Pröva att ladda om sidan, annars så leta hjälp.");
-            }
-            */
-        });
+        // To test the dialog (Swish link / QR code) without submitting and form, type "test" in the cert field
+        if (cert != "test") {
+            const res = await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeUVFeWKF0aPC-ZzD_hu7-_RA2EwD_DslduLWBJDodc9K-dBQ/formResponse", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded"},
+                body: postData
+            }).then((res) => {
+                /*
+                if (res.ok && res.status >= 200 && res.status < 300) {
+                    dialog.showModal();
+                } else {
+                    alert("Tekniskt fel! :( Pröva att ladda om sidan, annars så leta hjälp.");
+                }
+                */
+            });
+        }
     }
 </script>
 
