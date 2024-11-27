@@ -11,7 +11,7 @@
     let telRel = "";
     let member = "Medlem";
     
-    $: memberPrice =  (member == "Hedersmedlem" ? "2100" : member == "Stödmedlem" ? "300" : "3000");
+    $: memberPrice =  (member == "Hedersmedlem" ? "2100" : member == "Stödmedlem" ? "300" : "3200");
 
     $: swishUrl = "swish://payment?data={\"version\":1,\"payee\":{\"value\":\"1235425467\"},\"amount\":{\"value\":" + memberPrice + "},\"message\":{\"value\":\"" + cert + "\"}}";
     //             entry.2040625706=                      446666    &entry.1416888566=                   76767567    &entry.1366402579=                       Berif    &entry.1208613624=              fdsf%40gszc.azs    &entry.204702185=                   53452435    &entry.1888244923=                         bhdgfg    &entry.783511263=                       6457457    &entry.79715208=                                D
@@ -25,7 +25,7 @@
         dialog.showModal();
         // To test the dialog (Swish link / QR code) without submitting and form, type "test" in the cert field
         if (cert != "test") {
-            const res = await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeUVFeWKF0aPC-ZzD_hu7-_RA2EwD_DslduLWBJDodc9K-dBQ/formResponse", {
+            const res = await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSehgEG_8Bx449gZDQKaLybApb6p30_zcU822ViL93kthC5jWg/formResponse", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded"},
                 body: postData
@@ -54,7 +54,7 @@
             <a href={swishUrl}><button>Öppna Swish på denna enhet</button></a>
         </div>
     </dialog>
-    <h1>Medlemsskap 2024</h1>
+    <h1>Medlemsskap 2025</h1>
     <label for="cert">Certnummer:</label>
     <input id="cert" type="text" bind:value={cert} placeholder="Certnummer" autocomplete="off" />
     <label for="certlevel">Licensegrad:</label>

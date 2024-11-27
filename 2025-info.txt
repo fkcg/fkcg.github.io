@@ -1,0 +1,16 @@
+https://docs.google.com/forms/d/e/1FAIpQLSehgEG_8Bx449gZDQKaLybApb6p30_zcU822ViL93kthC5jWg/viewform?usp=sf_link
+
+entry.2040625706=12345&
+entry.1416888566=6512124321&
+entry.1366402579=Namn&
+entry.1208613624=email%40post.se&
+entry.204702185=031222000&
+entry.1888244923=Anh%C3%B6rig&
+entry.783511263=08999777&
+entry.79715208=D&
+dlut=1730932390216&
+fvv=1&
+partialResponse=%5Bnull%2Cnull%2C%22-4025513912084141232%22%5D&
+pageHistory=0&
+fbzx=-4025513912084141232&
+submissionTimestamp=1730932395486
